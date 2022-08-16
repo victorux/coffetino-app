@@ -59,7 +59,7 @@ export const SectionDescription = styled.p`
   font-family: ${({theme}) => theme.fonts.ubuntu};
   font-weight: 300;
   font-size: ${({theme}) => theme.fontSizes._400};
-  max-width: 600px;
+  max-width: 500px;
   margin-top: 20px;
   letter-spacing: 0.25px;
   line-height: 1.75;
