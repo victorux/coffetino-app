@@ -2,6 +2,7 @@ const globalVariables = {
   // COLORS
   colors: {
     primary: `#FF714A`,
+    primaryDark: `#d45835`,
     white: `#fff`,
     black: `#092436`,
     regular: `#6b7280`,
