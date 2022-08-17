@@ -23,7 +23,7 @@ const CardsWrapper = styled.div`
 function PopularSection() {
     return (
         <CardsWrapper>
-            <TitleOfSection align="center" />
+            <TitleOfSection align="center" label="Most popular this week" />
             <ProductCard imgUrl={img1} alt="" title="Starbucks - Costa Rica" price="30.99" avgRating="4.88" reviews="18" />
             <ProductCard imgUrl={img2} alt="" title="Earlybird - filter caffe" price="30.99" avgRating="4.88" reviews="18" />
             <ProductCard imgUrl={img3} alt="" title="LavAza - eco caps" price="30.99" avgRating="4.88" reviews="18" />

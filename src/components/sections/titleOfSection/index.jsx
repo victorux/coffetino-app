@@ -31,10 +31,10 @@ const TitleLabel = styled.h2`
     }
 `
 
-function TitleOfSection({align}) {
+function TitleOfSection({align, label}) {
     return (
         <TitleContainer align={align}>
-           <TitleLabel>Most popular this week</TitleLabel>
+           <TitleLabel>{label}</TitleLabel>
         </TitleContainer>
     );
 }
