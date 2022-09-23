@@ -47,7 +47,7 @@ export const InputContainer = styled.div`
     font-weight: 300;
     letter-spacing: 0.25px;
     max-width: 210px;
-    padding: 20px;
+    padding: 20px 20px 20px 14px;
     border-radius: 4px;
     outline: none;
     border: 2px solid ${ props => props.theme.colors.gray200};
