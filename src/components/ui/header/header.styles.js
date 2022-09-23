@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import globalVariables from '../../styles/globalVariables';
+import {device} from "../../styles/breakpoints.js";
 
 export const StyledHeader = styled.header`
   padding: 40px 0;
@@ -19,7 +20,29 @@ export const StyledNav = styled.nav`
   align-content: center;
 `
 
-export const LinksContainer = styled.div`
+export const LeftNavigation = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 30px;
+  font-size: ${globalVariables.fontSizes._400};
+`
+
+export const LeftLinksContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 30px;
+  font-size: ${globalVariables.fontSizes._400};
+
+  /* Hide links when: viewport < tablet */
+  @media ${device.tablet}{
+    display: none;
+  }
+`
+export const RightNavigation = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -62,4 +85,3 @@ export const IconQuantity = styled.div`
   justify-content: center;
   font-size: ${globalVariables.fontSizes._300};
 `
-

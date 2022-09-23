@@ -4,7 +4,9 @@ import {
   StyledHeader,
   Container,
   StyledNav,
-  LinksContainer,
+  LeftNavigation,
+  LeftLinksContainer,
+  RightNavigation,
   Link,
   StyledSpan,
   Separator,
@@ -15,13 +17,15 @@ function Header() {
     <StyledHeader>
       <Container>
         <StyledNav>
-          <LinksContainer>
+          <LeftNavigation>
             <Logo />
-            <Separator />
-            <Link href="" title="Shop">Shop</Link>
-            <Link href="" title="Shop">Subscription</Link>
-          </LinksContainer>
-          <LinksContainer>
+            <LeftLinksContainer>
+              <Separator />
+              <Link href="" title="Shop">Shop</Link>
+              <Link href="" title="Shop">Subscription</Link>
+            </LeftLinksContainer>
+          </LeftNavigation>
+          <RightNavigation>
             <CartIcon />
             <Separator />
             <div>
@@ -29,7 +33,7 @@ function Header() {
               <StyledSpan>or</StyledSpan>
               <Link href="" title="Sign up free" isHighlighted>Sign up Free</Link>
             </div>
-          </LinksContainer>
+          </RightNavigation>
         </StyledNav>
       </Container>
     </StyledHeader>
