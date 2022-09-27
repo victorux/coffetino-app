@@ -1,3 +1,4 @@
+import React from "react"
 import Logo from "./Logo"
 import CartIcon from "./CartIcon"
 import {
@@ -8,9 +9,10 @@ import {
   LeftLinksContainer,
   RightNavigation,
   Link,
-  StyledSpan,
   Separator,
 } from "./header.styles"
+import MobileMenu from "./MobileMenu"
+import DesktopMenu from "./DesktopMenu"
 
 function Header() {
   return (
@@ -27,12 +29,10 @@ function Header() {
           </LeftNavigation>
           <RightNavigation>
             <CartIcon />
-            <Separator />
-            <div>
-              <Link href="" title="Sign in">Sign In</Link>
-              <StyledSpan>or</StyledSpan>
-              <Link href="" title="Sign up free" isHighlighted>Sign up Free</Link>
-            </div>
+            {/* Mobile */}
+            <MobileMenu />
+            {/* Desktop */}
+            <DesktopMenu />
           </RightNavigation>
         </StyledNav>
       </Container>

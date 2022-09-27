@@ -1,11 +1,14 @@
 import logo from "../../../assets/logo.svg"
+import { StyledLogo } from "./header.styles"
 
 import {} from "./header.styles"
 
 function Logo() {
   return (
     <div>
-      <img src={logo} alt="Logo Coffetino"/>
+      <StyledLogo href="/">
+        <img src={logo} alt="Logo Coffetino"/>
+      </StyledLogo>
     </div>
   )
 }
