@@ -13,7 +13,7 @@ function FeatureSections(){
                 alt="Delivery"
                 align="left"
                 num="1"
-                title="Free delivery to your door"
+                title="Free delivery to your door."
                 desc="Fresh coffee delivered directly to your door, at schedule that suits you. Free guaranteed on all products."
             />
             <SectionItem

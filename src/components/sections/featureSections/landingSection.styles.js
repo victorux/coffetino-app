@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import globalVariables from "../../styles/globalVariables";
+import {device} from "../../styles/breakpoints";
 
 
 export const Wrapper = styled.div`
@@ -9,6 +10,10 @@ export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 120px;
+  
+  @media ${device.tablet}{
+    gap: 60px;
+  }
 `
 
 export const ItemContainer = styled.div`
@@ -20,6 +25,12 @@ export const ItemContainer = styled.div`
   
   flex-direction: ${({align}) =>
     (align === 'left' && 'row') || (align === "right" && "row-reverse") || "row"};
+
+  @media ${device.tablet}{
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 40px;
+  }
   
 `
 
@@ -27,6 +38,14 @@ export const ImageContainer = styled.div`
   img {
     padding: 0;
     margin: 0;
+    
+    @media ${device.tablet}{
+      display: none;
+    }
+
+    @media ${device.laptop}{
+      max-height: 400px;
+    }
   }
 `
 
@@ -34,9 +53,14 @@ export const ContentContainer = styled.div`
   display: flex;
   flex-direction: row;
   gap: 40px;
+  
+  @media ${device.tablet}{
+    gap: 20px;
+  }
 `
 
 export const Bubble = styled.div`
+  flex-shrink: 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -47,12 +71,25 @@ export const Bubble = styled.div`
   font-size: ${props => props.theme.fontSizes._500};
   font-weight: 700;
   color: #fff;
+  
+  @media ${device.laptop}{
+    width: 40px;
+    height: 40px;
+  }
 `
 
 export const SectionTitle = styled.h2`
   font-family: ${({theme}) => theme.fonts.sans};
   font-size: ${({theme}) => theme.fontSizes._900};
   max-width: 600px;
+
+  @media ${device.tablet}{
+    max-width: 100%;
+  }
+  
+  @media ${device.laptop}{
+    max-width: unset;
+  }
 `
 
 export const SectionDescription = styled.p`
@@ -63,4 +100,12 @@ export const SectionDescription = styled.p`
   margin-top: 20px;
   letter-spacing: 0.25px;
   line-height: 1.75;
+
+  @media ${device.tablet}{
+    width: 95%;
+  }
+
+  @media ${device.laptop}{
+    max-width: unset;
+  }
 `
