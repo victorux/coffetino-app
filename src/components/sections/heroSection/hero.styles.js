@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import {device} from '../../styles/breakpoints';
 
 
 export const Container = styled.div`
@@ -13,6 +14,19 @@ export const Title = styled.h1`
   margin-top: 120px;
   letter-spacing: 1.5px;
   padding: 0 20px;
+  
+  @media ${device.tablet}{
+    font-size: ${({theme}) => theme.fontSizes._800};
+    margin-top: 50px;
+    letter-spacing: 0.5px;
+    max-width: 420px !important;
+  }
+
+  @media ${device.laptop}{
+    max-width: 530px;
+    margin-top: 80px;
+    font-size: ${({theme}) => theme.fontSizes._900};
+  }
 `
 export const Subtitle = styled.p`
   font-family: ${({theme}) => theme.fonts.ubuntu};
@@ -27,11 +41,5 @@ export const Subtitle = styled.p`
 `
 export const ImagesContainer=styled.div`
   margin-top: 120px;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  align-items: center;
-  justify-content: center;
-  gap: 40px;
-  overflow: hidden;
+  width: 100%;
 `

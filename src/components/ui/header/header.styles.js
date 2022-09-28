@@ -9,6 +9,10 @@ export const StyledHeader = styled.header`
   @media ${device.tablet}{
     padding: 20px 0;
   }
+
+  @media ${device.laptop}{
+    padding: 28px 0;
+  }
 `
 
 export const Container = styled.div`
