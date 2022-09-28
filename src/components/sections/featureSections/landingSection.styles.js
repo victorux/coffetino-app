@@ -6,21 +6,22 @@ import {device} from "../../styles/breakpoints";
 export const Wrapper = styled.div`
   max-width: ${globalVariables.maxWidth};
   margin: 160px auto;
-  padding: 0 20px;
+  padding: 0 40px;
   display: flex;
   flex-direction: column;
   gap: 120px;
   
   @media ${device.tablet}{
     gap: 60px;
+    align-items: flex-start;
   }
 `
 
 export const ItemContainer = styled.div`
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: center;
   gap: 60px;
   
   flex-direction: ${({align}) =>
@@ -28,7 +29,11 @@ export const ItemContainer = styled.div`
 
   @media ${device.tablet}{
     flex-direction: column;
-    align-items: flex-start;
+    gap: 20px;
+  }
+
+  @media ${device.laptop}{
+    align-items: center;
     gap: 40px;
   }
   
@@ -87,9 +92,6 @@ export const SectionTitle = styled.h2`
     max-width: 100%;
   }
   
-  @media ${device.laptop}{
-    max-width: unset;
-  }
 `
 
 export const SectionDescription = styled.p`
@@ -105,7 +107,7 @@ export const SectionDescription = styled.p`
     width: 95%;
   }
 
-  @media ${device.laptop}{
-    max-width: unset;
+  @media ${device.laptopL}{
+    width: unset;
   }
 `
