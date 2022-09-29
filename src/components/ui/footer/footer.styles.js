@@ -1,10 +1,21 @@
 import styled from "styled-components";
+import  {device} from "../../styles/breakpoints";
 
 export const FooterStyled = styled.footer`
   margin: 120px auto;
   padding: 100px 20px 0 20px;
   max-width: ${props => props.theme.maxWidth};
   border-top: 1px solid ${ props => props.theme.colors.gray200};
+
+  @media ${device.laptopL}{
+    padding: 60px 60px 0 60px;
+    margin: 60px auto;
+  }
+
+  @media ${device.tablet}{
+    padding: 60px 20px 0 20px;
+    margin: 60px auto;
+  }
 `
 
 export const FooterBody = styled.div`
@@ -13,7 +24,20 @@ export const FooterBody = styled.div`
   flex-wrap: wrap;
   align-items: baseline;
   justify-content: space-between;
-  gap: 20px;
+  gap: 40px;
+  
+  @media ${device.laptopL}{
+    flex-direction: row;
+    justify-content: space-between;
+    row-gap: 80px;
+  }
+
+  @media ${device.tablet}{
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+  }
 `
 
 export const FooterBlock = styled.div`
@@ -21,6 +45,19 @@ export const FooterBlock = styled.div`
   flex-direction: column;
   align-items:flex-start;
   gap: 14px;
+  order: 2;
+
+  @media ${device.laptopL}{
+    align-items: center;
+    justify-content: center;
+
+    &:last-child {
+      width: 100%;
+      order: 1;
+      justify-content: center;
+      align-items: center;
+    }
+  }
 `
 
 export const ListTitle = styled.span`
@@ -40,6 +77,11 @@ export const InputContainer = styled.div`
   display: flex;
   flex-direction: row;
   gap: 7px;
+  
+  @media ${device.mobileL}{
+    flex-direction: column;
+    gap: 10px;
+  }
   
   input {
     height: 48px;
@@ -68,7 +110,12 @@ export const InputContainer = styled.div`
     border-radius: 4px;
     color: #fff;
     transition: 0.3s all ease;
-    transform: translateX(-14px);
+    transform: translateX(-12px);
+
+    @media ${device.mobileL}{
+      padding:  14px 0;
+      transform: translateX(0px);
+    }
     
     &:hover {
       background-color: ${props => props.theme.colors.primaryDark};
