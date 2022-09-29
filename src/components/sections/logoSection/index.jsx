@@ -6,8 +6,9 @@ import logo2 from "../../../assets/logos/02.svg";
 import logo3 from "../../../assets/logos/03.svg";
 import logo4 from "../../../assets/logos/04.svg";
 import logo5 from "../../../assets/logos/05.svg";
-import logo6 from "../../../assets/logos/06.svg";
+// import logo6 from "../../../assets/logos/06.svg";
 import logo7 from "../../../assets/logos/07.svg";
+import {device} from "../../styles/breakpoints";
 
 const Wrapper = styled.div`
   max-width: ${props => props.theme.maxWidth};
@@ -15,22 +16,50 @@ const Wrapper = styled.div`
   margin: 120px auto;
 `
 
-const LogosContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
+const StyledLogosGrid = styled.div`
+  width: 100%;
   justify-content: space-between;
-  gap: 40px;
+  align-items: center;
+  align-content: center;
   margin-top: 100px;
-  overflow: hidden;
+  display: grid;
+  grid-template-columns: auto auto auto auto auto auto;
+  grid-gap: 1rem;
   
-  img {
-    opacity: 0.4;
-    transition: all 0.22s ease;
-    
+  @media ${device.laptopL}{
+    justify-content: space-evenly;
+    grid-template-columns: auto auto auto auto;
+  }
+
+  @media ${device.laptop}{
+    grid-template-columns: auto auto auto;
+  }
+
+  @media ${device.tablet}{
+    grid-template-columns: auto auto;
+  }
+
+  > div {
+    padding: 1rem;
+    display: grid;
+    place-items: center;
     &:hover {
-      opacity: 1;
+      opacity: 0.7;
+      transition: all 0.33s ease-in-out;
     }
+    &::before {
+      content: "";
+      display: block;
+      padding-bottom: 100%;
+      grid-area: 1 / 1 / 2 / 2;
+    }
+
+    img {
+      user-select: none;
+      max-width: 170px;
+      grid-area: 1 / 1 / 2 / 2;
+    }
+    
   }
 `
 
@@ -38,15 +67,14 @@ function LogoSection() {
     return (
         <Wrapper>
             <TitleOfSection align="center" label="Our suppliers" />
-            <LogosContainer>
-                <img src={logo1} alt=""/>
-                <img src={logo2} alt=""/>
-                <img src={logo3} alt=""/>
-                <img src={logo4} alt=""/>
-                <img src={logo5} alt=""/>
-                <img src={logo6} alt=""/>
-                <img src={logo7} alt=""/>
-            </LogosContainer>
+            <StyledLogosGrid>
+                <div><img src={logo1} alt=""/></div>
+                <div><img src={logo2} alt=""/></div>
+                <div><img src={logo3} alt=""/></div>
+                <div><img src={logo4} alt=""/></div>
+                <div><img src={logo5} alt=""/></div>
+                <div><img src={logo7} alt=""/></div>
+            </StyledLogosGrid>
         </Wrapper>
     );
 }
