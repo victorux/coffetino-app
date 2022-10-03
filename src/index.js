@@ -6,6 +6,8 @@ import GlobalStyle from './components/styles/globalStore.styles.js';
 import globalVariables from './components/styles/globalVariables.js';
 import "./components/styles/googlefonts.css";
 
+
+
 const theme = {
   ...globalVariables,
 }

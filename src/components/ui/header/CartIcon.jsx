@@ -4,15 +4,16 @@ import {
   IconBox,
   IconQuantity
 } from "./header.styles"
+import { Link } from "react-router-dom"
 
 function CartIcon() {
   return (
-    <a href="/" title="Shopping cart">
+    <Link to="/cart" title="Shopping cart">
       <IconBox>
           <img src={cartIcon} width="24" alt="" />
         <IconQuantity>0</IconQuantity>
       </IconBox>
-    </a>
+    </Link>
   )
 }
 

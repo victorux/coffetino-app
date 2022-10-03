@@ -8,11 +8,11 @@ import {
   LeftNavigation,
   LeftLinksContainer,
   RightNavigation,
-  Link,
   Separator,
 } from "./header.styles"
 import MobileMenu from "./MobileMenu"
 import DesktopMenu from "./DesktopMenu"
+import {Link} from "react-router-dom";
 
 function Header() {
   return (
@@ -23,8 +23,8 @@ function Header() {
             <Logo />
             <LeftLinksContainer>
               <Separator />
-              <Link href="" title="Shop">Shop</Link>
-              <Link href="" title="Shop">Subscription</Link>
+              <Link to="/shop">Shop</Link>
+              <Link to="/subscription" >Subscription</Link>
             </LeftLinksContainer>
           </LeftNavigation>
           <RightNavigation>

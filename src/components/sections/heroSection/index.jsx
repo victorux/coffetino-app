@@ -28,47 +28,54 @@ function HeroSection() {
           <Container>
             <Title>Your favorite coffee to you door</Title>
             <Subtitle>Scrambled it to make a type specimen book. It has survived not only five centuries</Subtitle>
-            <Button label="Browse coffee now" />
+            <Button to="/shop" label="Browse coffee now" />
           </Container>
         </motion.div>
-        <ImagesContainer>
-          <Swiper
-            speed={9000}
-            autoplay={{
-              delay: 1000,
-              disableOnInteraction: false,
-            }}
-            spaceBetween={40}
-            loop= {true}
-            centeredSlides={true}
-            slidesPerView={1}
-            breakpoints={{
-              640: {
-                slidesPerView: 2,
-                speed: 8000
-              },
-              760: {
-                slidesPerView: 2
-              },
-              1024: {
-                slidesPerView: 3
-              },
-              1200: {
-                slidesPerView: 4
-              }
-            }}
-            modules={[Autoplay]}
-          >
-            <SwiperSlide><img src={img1} alt="" /></SwiperSlide>
-            <SwiperSlide><img src={img2} alt="" /></SwiperSlide>
-            <SwiperSlide><img src={img3} alt="" /></SwiperSlide>
-            <SwiperSlide><img src={img4} alt="" /></SwiperSlide>
-            <SwiperSlide><img src={img5} alt="" /></SwiperSlide>
-            <SwiperSlide><img src={img6} alt="" /></SwiperSlide>
+         <motion.div
+             initial={{ opacity: 0}}
+             animate={{ opacity: 1}}
+             transition={{ duration: 0.8, delay: 0.8 }}
+         >
+             <ImagesContainer>
+                 <Swiper
+                     speed={9000}
+                     autoplay={{
+                         delay: 1000,
+                         disableOnInteraction: false,
+                     }}
+                     spaceBetween={40}
+                     loop= {true}
+                     centeredSlides={true}
+                     slidesPerView={1}
+                     breakpoints={{
+                         640: {
+                             slidesPerView: 2,
+                             speed: 8000
+                         },
+                         760: {
+                             slidesPerView: 2
+                         },
+                         1024: {
+                             slidesPerView: 3
+                         },
+                         1200: {
+                             slidesPerView: 4
+                         }
+                     }}
+                     modules={[Autoplay]}
+                 >
+                     <SwiperSlide><img src={img1} alt="" /></SwiperSlide>
+                     <SwiperSlide><img src={img2} alt="" /></SwiperSlide>
+                     <SwiperSlide><img src={img3} alt="" /></SwiperSlide>
+                     <SwiperSlide><img src={img4} alt="" /></SwiperSlide>
+                     <SwiperSlide><img src={img5} alt="" /></SwiperSlide>
+                     <SwiperSlide><img src={img6} alt="" /></SwiperSlide>
 
-          </Swiper>
-  
-        </ImagesContainer>
+                 </Swiper>
+
+             </ImagesContainer>
+         </motion.div>
+
      </>
   )
 }

@@ -21,7 +21,7 @@ export const Container = styled.div`
   padding: 20px;
 `
 
-export const StyledLogo = styled.a`
+export const StyledLogo = styled.div`
 
   :hover {
     opacity: 0.7;
@@ -55,6 +55,7 @@ export const LeftLinksContainer = styled.div`
   font-size: ${globalVariables.fontSizes._400};
 
   a {
+    color: ${({ isHighlighted, ...otherProps }) => isHighlighted ? otherProps.theme.colors.primary : otherProps.theme.colors.black};
     position: relative;
   }
 
@@ -98,42 +99,52 @@ export const DesktopLinks = styled.div`
   flex-wrap: wrap;
   gap: 30px;
   font-size: ${globalVariables.fontSizes._400};
+  
+  div {
 
-  a {
-    position: relative;
 
-    :last-child::before {
-      background-color: ${({theme}) => theme.colors.primary};
+    a {
+      position: relative;
+      color: ${({theme}) => theme.colors.black};
+      
+      :last-child{
+        color: ${({theme}) => theme.colors.primary};
+      }
+
+
+      :last-child::before {
+        background-color: ${({theme}) => theme.colors.primary};
+      }
     }
-  }
 
-  a::before {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 1px;
-    border-radius: 4px;
-    background-color: #18272F;
-    bottom: -10px;
-    left: 0;
-    transform-origin: right;
-    transform: scaleX(0);
-    transition: transform .3s ease-in-out;
-  }
+    a::before {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 1px;
+      border-radius: 4px;
+      background-color: #18272F;
+      bottom: -10px;
+      left: 0;
+      transform-origin: right;
+      transform: scaleX(0);
+      transition: transform .3s ease-in-out;
+    }
 
-  a:hover::before {
-    transform-origin: left;
-    transform: scaleX(1);
-  }
+    a:hover::before {
+      transform-origin: left;
+      transform: scaleX(1);
+    }
+  }  
 
   @media ${device.tablet}{
     display: none;
   }
 `
 
-export const Link = styled.a`
-  color: ${({ isHighlighted, ...otherProps }) => isHighlighted ? otherProps.theme.colors.primary : otherProps.theme.colors.black};
-`
+// export const StyledLink = styled.a`
+//   color: ${({ isHighlighted, ...otherProps }) => isHighlighted ? otherProps.theme.colors.primary : otherProps.theme.colors.black};
+// `
 
 export const StyledSpan = styled.span`
   margin: 0 14px; 

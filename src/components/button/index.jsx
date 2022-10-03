@@ -1,11 +1,12 @@
-
 import {
     StyledButton
 } from "./button.styles";
+import {useNavigate} from "react-router-dom";
 
-function Button({label}){
+function Button({label, to}){
+    const navigate = useNavigate();
     return(
-        <StyledButton>{label}</StyledButton>
+        <StyledButton onClick={() => navigate(to)}>{label}</StyledButton>
     )
 }
 

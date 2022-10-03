@@ -1,18 +1,19 @@
 import React from 'react'
 import {
   DesktopLinks,
-  Link,
+  // StyledLink,
   StyledSpan,
   Separator} from './header.styles.js'
+import {Link} from "react-router-dom"
 
 function DesktopMenu() {
   return (
     <DesktopLinks>
       <Separator />
         <div>
-          <Link href="" title="Sign in">Sign In</Link>
+          <Link to="/signin" title="Sign in">Sign In</Link>
           <StyledSpan>or</StyledSpan>
-          <Link href="" title="Sign up free" isHighlighted>Sign up Free</Link>
+          <Link to="/signup" title="Sign up free" className="primary">Sign up Free</Link>
         </div>
     </DesktopLinks>
   )
