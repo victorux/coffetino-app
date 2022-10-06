@@ -5,6 +5,7 @@ import {
     StyledFiltersContainer} from "./FilterBar.styled";
 import FilterButton from "./FilterButton";
 import sliders from '../../../assets/icons/sliders.svg'
+import sort from '../../../assets/icons/sort.svg'
 
 const FilterBar = () => {
     return (
@@ -12,7 +13,7 @@ const FilterBar = () => {
             <StyledTitle>Products</StyledTitle>
             <StyledFiltersContainer>
                 <FilterButton icon={sliders} label="Filters"/>
-                <FilterButton icon="" label="Newest"/>
+                <FilterButton icon={sort} label="Newest"/>
             </StyledFiltersContainer>
         </StyledContainer>
     );

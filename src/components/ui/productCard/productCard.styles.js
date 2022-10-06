@@ -6,7 +6,12 @@ export const CardContainer = styled.div`
 `
 
 export const CardImage = styled.div`
-    
+  width: 100%;
+  
+  img {
+    width: 100%;
+  }
+  
 `
 
 export const CardBody = styled.div`

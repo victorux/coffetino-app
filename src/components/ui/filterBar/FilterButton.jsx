@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components'
+import {device} from "../../styles/breakpoints";
 
 const StyledButton = styled.div`
   padding: 12px 20px;
@@ -10,12 +11,18 @@ const StyledButton = styled.div`
   align-items: center;
   gap: 7px;
   cursor: pointer;
+  
+  span {
+    @media ${device.tablet}{
+      display: none;
+    }
+  }
 `
 
 const FilterButton = ({label, icon}) => {
     return (
         <StyledButton>
-            { icon ? <><img src={icon} alt={label} width="16px" /> {label}</> : label}
+            { icon ? <><img src={icon} alt={label} width="16px" /> <span>{label}</span></> : label}
         </StyledButton>
     );
 };
