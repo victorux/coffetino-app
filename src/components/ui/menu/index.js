@@ -5,7 +5,7 @@ import { bool } from 'prop-types';
 const Menu = ({open}) => {
   return (
     <StyledMenu open={open} >
-      <a href="/">
+      <a href="/products">
         Shop
       </a>
       <a href="/">

@@ -10,17 +10,19 @@ import {
 import star from "../../../assets/icons/star.png"
 
 
-function ProductCard({title, avgRating, reviews, price, imgUrl, alt}) {
+function ProductItem({id, img, title, price, rating}) {
+
+
     return (
-        <CardContainer>
-            <CardImage><img src={imgUrl} alt={alt} /></CardImage>
+        <CardContainer key={id}>
+            <CardImage img={img} />
             <CardBody>
                 <CardTitle>{title}</CardTitle>
-                <CardRating><img src={star} alt="" />{avgRating} ({reviews})</CardRating>
+                <CardRating><img src={star} alt="" />{rating}</CardRating>
                 <CardPrice>From: <Price>€{price}</Price></CardPrice>
             </CardBody>
         </CardContainer>
     );
 }
 
-export default ProductCard;
+export default ProductItem;

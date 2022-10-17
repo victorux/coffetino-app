@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import {device} from "../../styles/breakpoints.js";
 
 export const StyledMenu = styled.nav`
+  z-index: 100;
   height: auto;
   display: flex;
   flex-direction: column;

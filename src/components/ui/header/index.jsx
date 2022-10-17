@@ -23,7 +23,7 @@ function Header() {
             <Logo />
             <LeftLinksContainer>
               <Separator />
-              <Link to="/shop">Shop</Link>
+              <Link to="/products">Shop</Link>
               <Link to="/subscription" >Subscription</Link>
             </LeftLinksContainer>
           </LeftNavigation>

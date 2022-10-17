@@ -36,3 +36,32 @@ export const StyledFiltersContainer = styled.div`
     gap: 10px;
   }
 `
+
+
+export const StyledSelect = styled.div`
+    position: relative;
+`
+
+export const Select = styled.select`
+    border-radius: 7px;
+    border: 1px solid ${({theme}) => theme.colors.gray300};
+    background-color: white;
+    color: ${({theme}) => theme.colors.black};
+    font-size: 1rem;
+    text-align: center;
+    padding: 14px 20px;
+    text-align: center;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    text-indent: 1px;
+    text-overflow: '';
+    letter-spacing: 0.025rem;
+    transition: all .33s ease;
+    transition: all .33s ease;
+  
+
+    &:focus {
+        outline-offset: 0px !important;
+        outline: none !important;
+    }
+`

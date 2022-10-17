@@ -1,12 +1,10 @@
+import React, {useState, useEffect } from "react";
+import axios from "axios";
+
 import TitleOfSection from "../titleOfSection";
-import ProductCard from "../../ui/productCard";
+import ProductItem from "../../ui/productItems/ProductItem";
 import styled from "styled-components";
 import {device} from "../../styles/breakpoints";
-
-import img1 from "../../../assets/products/popular/starbucks.jpg"
-import img2 from "../../../assets/products/popular/earlybird.jpg"
-import img3 from "../../../assets/products/popular/lavaza.jpg"
-import img4 from "../../../assets/products/popular/mincoffe.jpg"
 
 const CardsWrapper = styled.div`
   
@@ -33,14 +31,30 @@ const CardsWrapper = styled.div`
 `
 
 function PopularSection() {
+  const [products, setProducts] = useState([]);
+
+  const getProducts = async () => {
+    try {
+      const res = await axios.get("/api/products");
+      setProducts(res.data.slice(0,5));
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  useEffect( () => {
+    getProducts();
+  }, []);
+
+  console.log(products);
+
     return (
         <div>
             <TitleOfSection align="center" label="Most popular this week"/>
             <CardsWrapper>
-                <ProductCard imgUrl={img1} alt="" title="Starbucks - Costa Rica" price="30.99" avgRating="4.88" reviews="18" />
-                <ProductCard imgUrl={img2} alt="" title="Earlybird - filter caffe" price="30.99" avgRating="4.88" reviews="18" />
-                <ProductCard imgUrl={img3} alt="" title="LavAza - eco caps" price="30.99" avgRating="4.88" reviews="18" />
-                <ProductCard imgUrl={img4} alt="" title="Mint - coffee" price="30.99" avgRating="4.88" reviews="18" />
+                {
+                  products.map(product => <ProductItem img={product.img} key={product._id} id={product._id} title={product.title} price={product.price} />)
+                }
             </CardsWrapper>
         </div>
 

@@ -4,7 +4,7 @@ import Header from "./components/ui/header";
 import FooterComponent from "./components/ui/footer/index.jsx";
 // Pages
 import Home from "./pages/Home"
-import Shop from "./pages/Shop"
+import Products from "./pages/Products"
 import Success from "./pages/Success";
 import Pay from "./pages/Pay";
 
@@ -18,7 +18,8 @@ function App() {
 
             <Routes>
                 <Route path="/" element={<Home />} />
-                <Route path="/shop" element={<Shop />} />
+                <Route path="/products" element={<Products />} />
+                <Route path="/products/:category" element={<Products />} />
                 <Route path="/pay" element={<Pay />} />
                 <Route path="/success" element={<Success />} />
             </Routes>

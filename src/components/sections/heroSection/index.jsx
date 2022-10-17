@@ -28,7 +28,7 @@ function HeroSection() {
           <Container>
             <Title>Your favorite coffee to you door</Title>
             <Subtitle>Scrambled it to make a type specimen book. It has survived not only five centuries</Subtitle>
-            <Button to="/shop" label="Browse coffee now" />
+            <Button to="/products" label="Browse coffee now" />
           </Container>
         </motion.div>
          <motion.div
