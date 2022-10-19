@@ -2,10 +2,6 @@ import styled from "styled-components";
 import { device } from "../../styles/breakpoints";
 
 
-export const CardContainer = styled.div`
-  margin-top: 40px;
-`
-
 export const CardImage = styled.div`
   width: 100%;
   height: 300px;
@@ -14,7 +10,32 @@ export const CardImage = styled.div`
   background-position: center;
   background-repeat: no-repeat;
   overflow: hidden;
-  
+  transition: 0.18s all ease-in-out;
+`
+
+export const CardTitle = styled.h3`
+    font-size: ${props => props.theme.fontSizes._500};
+    font-family: ${props => props.theme.fonts.ubuntu};
+    transition: 0.4s all ease;
+    color: ${({theme}) => theme.colors.black};
+    
+    @media ${device.tablet}{
+      font-size: ${props => props.theme.fontSizes._400};
+    }
+`
+
+export const CardContainer = styled.div`
+  margin-top: 40px;
+  overflow: hidden;
+  cursor: pointer;
+
+  :hover ${CardImage} {
+    scale: 1.07;
+  }
+
+  :hover ${CardTitle} {
+    color: ${props => props.theme.colors.primary};
+  }
 `
 
 export const CardBody = styled.div`
@@ -26,14 +47,7 @@ export const CardBody = styled.div`
   gap: 10px;
 `
 
-export const CardTitle = styled.h3`
-    font-size: ${props => props.theme.fontSizes._500};
-    font-family: ${props => props.theme.fonts.ubuntu};
 
-    @media ${device.tablet}{
-      font-size: ${props => props.theme.fontSizes._400};
-    }
-`
 
 export const CardRating = styled.div`
   font-size: ${props => props.theme.fontSizes._400};
@@ -42,6 +56,7 @@ export const CardRating = styled.div`
   align-items: center;
   justify-content: flex-start;
   gap: 5px;
+  color: ${({theme}) => theme.colors.black};
 
   @media ${device.tablet}{
       font-size: ${props => props.theme.fontSizes._300};

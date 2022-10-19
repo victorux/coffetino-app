@@ -14,14 +14,18 @@ function ProductItem({id, img, title, price, rating}) {
 
 
     return (
-        <CardContainer key={id}>
-            <CardImage img={img} />
-            <CardBody>
-                <CardTitle>{title}</CardTitle>
-                <CardRating><img src={star} alt="" />{rating}</CardRating>
-                <CardPrice>From: <Price>€{price}</Price></CardPrice>
-            </CardBody>
-        </CardContainer>
+        <>
+            <a href="/product/id">
+            <CardContainer key={id}>
+                <CardImage img={img} />
+                <CardBody>
+                    <CardTitle>{title}</CardTitle>
+                    <CardRating><img src={star} alt="" />{rating}</CardRating>
+                    <CardPrice>From: <Price>€{price}</Price></CardPrice>
+                </CardBody>
+            </CardContainer>
+            </a>
+        </>
     );
 }
 

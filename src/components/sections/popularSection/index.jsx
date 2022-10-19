@@ -30,7 +30,7 @@ const CardsWrapper = styled.div`
 
 `
 
-function PopularSection() {
+function PopularSection({align}) {
   const [products, setProducts] = useState([]);
 
   const getProducts = async () => {
@@ -50,10 +50,10 @@ function PopularSection() {
 
     return (
         <div>
-            <TitleOfSection align="center" label="Most popular this week"/>
+            <TitleOfSection align={align} label="Most popular this week"/>
             <CardsWrapper>
                 {
-                  products.map(product => <ProductItem img={product.img} key={product._id} id={product._id} title={product.title} price={product.price} />)
+                  products.map(product => <ProductItem img={product.img} key={product._id} id={product._id} title={product.title} price={product.price} rating={product.rating} />)
                 }
             </CardsWrapper>
         </div>

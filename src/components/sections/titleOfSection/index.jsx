@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { device } from '../../styles/breakpoints';
 
 const TitleContainer = styled.div`
   display: flex;
@@ -10,7 +11,6 @@ const TitleContainer = styled.div`
 };
   margin: 0 auto;
   width: 100%;
-  padding: 0 20px;
 `
 
 const TitleLabel = styled.h2`
@@ -18,6 +18,11 @@ const TitleLabel = styled.h2`
     font-family: ${props => props.theme.fonts.sans};
     display: block;
     position: relative;
+    font-weight: 400;
+
+    @media ${device.tablet} {
+        font-size: ${({theme}) => theme.fontSizes._700};
+    }
   
     &:after{
         content: "";

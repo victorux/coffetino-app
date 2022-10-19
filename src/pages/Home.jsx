@@ -8,7 +8,7 @@ function Home(){
         <div>
             <HeroSection />
             <FeatureSections/>
-            <PopularSection />
+            <PopularSection align="center" />
             <LogoSection />
         </div>
 
