@@ -51,7 +51,7 @@ function PopularSection({align}) {
             <TitleOfSection align={align} label="Most popular this week"/>
             <CardsWrapper>
                 {
-                  products.map((product, index) => <ProductItem img={product.img} key={product._id} id={product._id} title={product.title} price={product.price} rating={product.rating} />)
+                  Array.from(products).map((product) => <ProductItem img={product.img} key={product._id} id={product._id} title={product.title} price={product.price} rating={product.rating} />)
                 }
             </CardsWrapper>
         </div>
