@@ -8,6 +8,7 @@ import {
     Price
 } from "./productCard.styles.js";
 import star from "../../../assets/icons/star.png"
+import { Link } from "react-router-dom"
 
 
 function ProductItem({id, img, title, price, rating}) {
@@ -15,7 +16,7 @@ function ProductItem({id, img, title, price, rating}) {
 
     return (
         <>
-            <a href="/product/id">
+            <Link to={`/product/${id}`}>
             <CardContainer key={id}>
                 <CardImage img={img} />
                 <CardBody>
@@ -24,7 +25,7 @@ function ProductItem({id, img, title, price, rating}) {
                     <CardPrice>From: <Price>€{price}</Price></CardPrice>
                 </CardBody>
             </CardContainer>
-            </a>
+            </Link>
         </>
     );
 }

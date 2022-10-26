@@ -1,4 +1,6 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import axios from 'axios';
+import { useLocation } from 'react-router-dom'
 import { ProductDetails, 
   ImageContainer, 
   MainContainer, 
@@ -27,35 +29,56 @@ import star from '../../../assets/icons/star.png'
 import cartIcon from '../../../assets/icons/shopping-cart-white.svg'
 import TitleOfSection from '../../sections/titleOfSection'
 import PopularSection from '../../sections/popularSection'
+import { addProduct } from '../../../redux/cartRedux';
+import { useDispatch } from 'react-redux';
 
 function ProductInfo() {
-  const [qtyPacks, setQtyPacks] = useState(1);
+  const [product, setProduct] = useState([]);
+  const [quantity, setQuantity] = useState(1);
+  const [type, setType] = useState(null);
   const [sub, setSub] = useState('onetime');
 
+  const location = useLocation();
+  const id =  location.pathname.split('/')[2];
+
+  const dispatch = useDispatch();
+  
+
+  useEffect(() => {
+    const getProduct = async () => {
+      try {
+        const res = await axios.get('/api/products/find/' + id)
+        setProduct(res.data);
+        setType(res.data.type[0])
+      } catch(err) {}}
+    getProduct();
+  }, [id]);
+
+
   const handleIncrease = (e) => {
-    const current = Number(qtyPacks);
+    const current = Number(quantity);
     if (e.target.name === "inc") {
-      if(qtyPacks >= 99){
-        setQtyPacks(99)
+      if(quantity >= 99){
+        setQuantity(99)
       } else {
-        setQtyPacks(current + 1)
+        setQuantity(current + 1)
       }
     } else {
-      if(qtyPacks > 1) {
-        setQtyPacks(current - 1)
+      if(quantity > 1) {
+        setQuantity(current - 1)
       } else {
-        setQtyPacks(1)
+        setQuantity(1)
       }
     }
   }
 
   const handleQtyChange = e => {
     if(e.target.value.length > 2) {
-      setQtyPacks(e.target.value.slice(0, 2))
+      setQuantity(e.target.value.slice(0, 2))
     } else if(e.target.value.charAt(0) === '0'){
-      setQtyPacks(e.target.value.substring(1));
+      setQuantity(e.target.value.substring(1));
     } else {
-      setQtyPacks(e.target.value)
+      setQuantity(e.target.value)
     }
   }
 
@@ -63,26 +86,40 @@ function ProductInfo() {
     setSub(e.currentTarget.id)
   }
 
+  const handleClick = () => {
+    // update cart
+    dispatch(
+      addProduct({
+        ...product,
+        quantity,
+        sub: sub,
+        typeSelected: type
+      }
+      )
+    )
+  };
+
   return (
     <>
     <MainContainer>
       <ImageContainer>
-        <img src="https://i.ibb.co/T84BYrd/cb-lavazza-1000g-tierra-planet-0001-1.jpg" alt="" />
+        <img src={product.img} alt="" />
       </ImageContainer>
       <ProductDetails>
-        <ProductTitle>Tierra Organic - Lavazza</ProductTitle>
-        <ProductRating>Rating <img src={star} alt="" /><span>4.68</span></ProductRating>
+        <ProductTitle>{product.title}</ProductTitle>
+        <ProductRating>Rating <img src={star} alt="" /><span>{product.rating}</span></ProductRating>
         <StyledSection>
           <LabelStyled>Coffe Type</LabelStyled>
-          <Select>
-            <option value="beans">Whole Beans</option>
-            <option value="pouder">Pouder</option>
+          <Select onChange={(e) => setType(e.target.value)}>
+              {
+                product.type?.map(t => <option key={t} value={t}>{t}</option>)
+              }
           </Select>
         </StyledSection>
         <StyledSection>
           <LabelStyled>Packs per shipment</LabelStyled>
           <QtyPacks>
-            <Input name="qty" value={qtyPacks} type="number" onChange={handleQtyChange}  min="1" max="99" />
+            <Input name="qty" value={quantity} type="number" onChange={handleQtyChange}  min="1" max="99" />
             <Button name="inc" onClick={handleIncrease}>+</Button>
             <Button name="dec" onClick={handleIncrease}>-</Button>
           </QtyPacks>
@@ -93,7 +130,7 @@ function ProductInfo() {
           <CardSubscription id="onetime" onClick={handleSubscription} sub={sub}>
             <CardDesc>
               <Period>One Time</Period>
-              <PeriodPrice>$34.99</PeriodPrice>
+              <PeriodPrice>{product.price}</PeriodPrice>
             </CardDesc>
           </CardSubscription>
           <CardSubscription id="quarterly" onClick={handleSubscription} sub={sub}>
@@ -114,15 +151,13 @@ function ProductInfo() {
         </StyledSection>
         <hr  style={{height:'1px',borderWidth:0, color:'gray',backgroundColor:'#DFDFDF', margin: '30px 0'}} />
         <Summary>
-          <CartButton><img src={cartIcon} alt='' /><span>Add to Cart</span></CartButton>
+          <CartButton onClick={handleClick}><img src={cartIcon} alt='' /><span>Add to Cart</span></CartButton>
           <SummaryInfo>
-            <SummaryPrice>$70.99 / One-time</SummaryPrice>
+            <SummaryPrice>${product.price} / One-time</SummaryPrice>
             <SummaryDetails>Whole Bean, 2 packs,  One-time delivery</SummaryDetails>
           </SummaryInfo>
         </Summary>
       </ProductDetails>
-
-      
     </MainContainer>
     <TitleOfSection align="left" label="Description" />
     <Description>

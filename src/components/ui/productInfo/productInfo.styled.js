@@ -75,6 +75,7 @@ export const LabelStyled= styled.span`
 
 export const Select = styled.select`
     font-size: ${({theme}) => theme.fontSizes._400};
+    text-transform: capitalize;
     color: ${({theme}) => theme.colors.black};
     border-radius: 7px;
     border: 2px solid ${({theme}) => theme.colors.gray300};

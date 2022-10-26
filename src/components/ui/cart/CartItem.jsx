@@ -1,6 +1,9 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components'
 import { device } from '../../styles/breakpoints'
+// import { ProductDetails } from '../productInfo/productInfo.styled'
+import { removeProduct, changeSelectedType, changeDeliveryType, changeQuantity } from '../../../redux/cartRedux';
+import { useDispatch } from 'react-redux';
 
 
 const Item = styled.div`
@@ -34,6 +37,9 @@ const DescItems = styled.div`
     gap: 40px;
     align-items: flex-end;
 
+    select {
+        text-transform: capitalize;
+    }
 
 
     @media ${ device.laptopL} {
@@ -52,7 +58,8 @@ const DescItem = styled.div`
     flex-direction: column;
     gap: 7px;
 
-    select {
+    select,
+    input {
         padding: 0.4rem 0.2rem;
         border-radius: 7px;
         border: 1px solid ${({theme}) => theme.colors.gray400};
@@ -60,6 +67,10 @@ const DescItem = styled.div`
         color: ${({theme}) => theme.colors.black};
         cursor: pointer;
         background-color: #fff;
+    }
+
+    input {
+        max-width: 50px;
     }
 
     @media ${device.mobileL}{
@@ -108,36 +119,124 @@ const ItemPrice = styled.span`
 `
 
 
-function CartItem() {
+function CartItem({product}) {
+
+const [quantity, setQuantity] = useState(null);
+
+useEffect(()=> {
+    setQuantity(product.quantity);
+}, [product]);
+
+const dispatch = useDispatch();
+
+// Create our number formatter.
+const formatter = new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
+  
+    // These options are needed to round to whole numbers if that's what you want.
+    //minimumFractionDigits: 0, // (this suffices for whole numbers, but will print 2500.10 as $2,500.1)
+    //maximumFractionDigits: 0, // (causes 2500.99 to be printed as $2,501)
+  });
+
+const handleClickAndDelete = () => {
+    dispatch(
+        removeProduct(product._id)
+    );
+}
+
+const handleTypeChange = (e) => {
+    dispatch(
+        changeSelectedType(
+            {
+                id: product._id,
+                type: e.target.value
+            }
+    ))
+}
+
+const handleDeliveryChange = (e) => {
+    dispatch(
+        changeDeliveryType(
+            {
+                id: product._id,
+                sub: e.target.value
+            }
+    ))
+}
+
+const handleQtyChange = (e) => {
+    
+    const value = Number(e.target.value);
+    console.log(value)
+
+    if(value <= 0 ) {
+        setQuantity(1)
+        e.target.value = 1;
+        dispatch(
+            changeQuantity(
+                {
+                    id: product._id,
+                    qty: 1
+                }
+        ))
+    } else {
+        setQuantity(value)
+        dispatch(
+            changeQuantity(
+                {
+                    id: product._id,
+                    qty: value
+                }
+        ))
+    }
+
+    
+}
+
   return (
     <Item>
         <ItemImage>
-            <img alt="" src='https://i.ibb.co/T84BYrd/cb-lavazza-1000g-tierra-planet-0001-1.jpg' />
+            <img alt="" src={product.img} />
         </ItemImage>
         <ItemContent>
-            <Title>Product Title</Title>
+            <Title>{product.title}</Title>
             <DescItems>
                 <DescItem>
                     <Subtitle>Type</Subtitle>
-                    <select>
-                        <option>Whole beans</option>
+                    <select defaultValue={product.typeSelected} onChange={handleTypeChange}>
+                        {
+                            product.type.map((type, i) =>  
+                                <option 
+                                    key={'type'+ i} 
+                                    value={type}
+                                >
+                                    {type}
+                                </option>)
+                        }                       
                     </select>
                 </DescItem>
                 <DescItem>
                     <Subtitle>Delivery</Subtitle>
-                    <select>
-                        <option>One Time</option>
+                    <select defaultValue={product.sub} onChange={handleDeliveryChange}>
+                        {
+                            ['onetime', 'quarterly', 'monthly'].map((item, i) =>  
+                                <option 
+                                    key={'sub'+ i} 
+                                    value={item}
+                                >
+                                    {item}
+                                </option>)
+                        }                       
                     </select>
                 </DescItem>
                 <DescItem>
                     <Subtitle>Qty</Subtitle>
-                    <select>
-                        <option>2</option>
-                    </select>
+                    <input onChange={handleQtyChange} type="number" placeholder="qty" defaultValue={quantity} />
                 </DescItem>
-                <DeleteButton>Delete</DeleteButton>
+                <DeleteButton onClick={handleClickAndDelete}>Delete</DeleteButton>
             </DescItems>
-            <div><Subtitle>Total:</Subtitle><ItemPrice>$48.99</ItemPrice></div>
+            <div><Subtitle>Total Price:</Subtitle><ItemPrice>{formatter.format(product.total)}</ItemPrice></div>
         </ItemContent>
     </Item>
   )

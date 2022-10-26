@@ -45,9 +45,7 @@ function PopularSection({align}) {
   useEffect( () => {
     getProducts();
   }, []);
-
-  console.log(products);
-
+  
     return (
         <div>
             <TitleOfSection align={align} label="Most popular this week"/>

@@ -43,7 +43,6 @@ function ProductsItems({ sort, cat }) {
         setProducts(res.data);
         setLoading(false)
       } catch (error) {
-        console.log(error);
         setLoading(false);
       }
     };
@@ -73,7 +72,15 @@ function ProductsItems({ sort, cat }) {
       <StyledProducts>
       { loading 
         ? "Loading"
-        : products.map(product => <ProductItem img={product.img} key={product._id} id={product._id} title={product.title} price={product.price} rating={product.rating} /> )
+        : products.map(product =>
+          <ProductItem 
+            img={product.img} 
+            key={product._id} 
+            id={product._id} 
+            title={product.title} 
+            price={product.price} 
+            rating={product.rating} 
+          /> )
       }
       </StyledProducts>
     </div>

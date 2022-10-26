@@ -5,13 +5,16 @@ import {
   IconQuantity
 } from "./header.styles"
 import { Link } from "react-router-dom"
+import { useSelector } from "react-redux";
 
 function CartIcon() {
+  const quantity = useSelector(state => state.cart.qty);
+
   return (
     <Link to="/cart" title="Shopping cart">
       <IconBox>
           <img src={cartIcon} width="24" alt="" />
-        <IconQuantity>0</IconQuantity>
+        <IconQuantity>{quantity}</IconQuantity>
       </IconBox>
     </Link>
   )

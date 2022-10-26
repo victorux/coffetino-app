@@ -4,9 +4,12 @@ import globalVariables from '../components/styles/globalVariables';
 import { device } from '../components/styles/breakpoints';
 
 import CartItem from '../components/ui/cart/CartItem';
-import SummaryItem from '../components/ui/cart/SummaryItem';
+// import SummaryItem from '../components/ui/cart/SummaryItem';
 import Total from '../components/ui/cart/Total';
 import Button from '../components/button/index';
+import {useNavigate} from "react-router-dom";
+
+import { useSelector } from "react-redux"
 
 
 const BodyContainer = styled.div`
@@ -104,16 +107,17 @@ const SummaryBlock = styled.div`
 
 function Cart() {
 
+  const cart = useSelector(state => state.cart)
+  const navigate = useNavigate();
+
   return (
     <BodyContainer>
       <LeftBlock>
         <Title>Shopping Cart</Title>
         <CartList>
-          <CartItem />
-          <CartItem />
-          <CartItem />
+          {cart.products.map((product, i) => <CartItem key={'p'+ i} product={product} />)}
           <div>
-            <BorderButton>Continue shopping</BorderButton>
+            <BorderButton onClick={() => navigate("/products") }>Continue shopping</BorderButton>
           </div>
         </CartList>
       </LeftBlock>
@@ -121,9 +125,7 @@ function Cart() {
         <Title>Order Summary</Title>
         <SummaryBlock>
           <SummaryList>
-            <SummaryItem />
-            <SummaryItem />
-            <SummaryItem />
+            {/* {cart.products.map(product => <SummaryItem />)} */}
           </SummaryList>
           <Total />
           <Button label="Go to checkout" />

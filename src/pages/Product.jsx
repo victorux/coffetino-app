@@ -15,7 +15,7 @@ function ProductPage() {
   return (
     <Wrapper>
         <ProductInfo />
-        {/* Bellow goes product description componenet */}
+      {/* Bellow goes product description componenet */}
     </Wrapper>
   )
 }
