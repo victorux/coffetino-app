@@ -46,12 +46,13 @@ function PopularSection({align}) {
     getProducts();
   }, []);
   
+  console.log(products);
     return (
         <div>
             <TitleOfSection align={align} label="Most popular this week"/>
             <CardsWrapper>
                 {
-                  Array.from(products).map((product) => <ProductItem img={product.img} key={product._id} id={product._id} title={product.title} price={product.price} rating={product.rating} />)
+                  products.map((product) => <ProductItem img={product.img} key={product._id} id={product._id} title={product.title} price={product.price} rating={product.rating} />)
                 }
             </CardsWrapper>
         </div>
