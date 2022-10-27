@@ -136,7 +136,7 @@ export const Input = styled.input`
     }
 `
 
-export const Button = styled.button`
+export const StyledButton = styled.button`
     width: 4rem;
     font-size: 1.4rem;
     font-weight: 300;

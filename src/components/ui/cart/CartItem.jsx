@@ -236,7 +236,7 @@ const handleQtyChange = (e) => {
                 </DescItem>
                 <DeleteButton onClick={handleClickAndDelete}>Delete</DeleteButton>
             </DescItems>
-            <div><Subtitle>Total Price:</Subtitle><ItemPrice>{formatter.format(product.total)}</ItemPrice></div>
+            <div><Subtitle>Price:</Subtitle><ItemPrice>{formatter.format(product.price)}</ItemPrice></div>
         </ItemContent>
     </Item>
   )

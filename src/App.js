@@ -1,4 +1,5 @@
-import { BrowserRouter, Routes, Route} from "react-router-dom"
+import { BrowserRouter, Routes, Route, useLocation} from "react-router-dom"
+import { useLayoutEffect } from 'react'
 // UI Components
 import Header from "./components/ui/header";
 import FooterComponent from "./components/ui/footer/index.jsx";
@@ -11,20 +12,30 @@ import Pay from "./pages/Pay";
 import Cart from "./pages/Cart";
 
 function App() {
+
+  const Wrapper = ({children}) => {
+    const location = useLocation();
+    useLayoutEffect(() => {
+      document.documentElement.scrollTo(0, 0);
+    }, [location.pathname]);
+    return children
+  }
+
   return (
     <>
         <BrowserRouter>
-            <Header />
-
-            <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/products" element={<Products />} />
-                <Route path="/product/:id" element={<Product />} />
-                <Route path="/cart" element={<Cart />} />
-                <Route path="/pay" element={<Pay />} />
-                <Route path="/success" element={<Success />} />
-            </Routes>
-            <FooterComponent />
+          <Wrapper>
+              <Header />
+              <Routes>
+                  <Route path="/" element={<Home />} />
+                  <Route path="/products" element={<Products />} />
+                  <Route path="/product/:id" element={<Product />} />
+                  <Route path="/cart" element={<Cart />} />
+                  <Route path="/pay" element={<Pay />} />
+                  <Route path="/success" element={<Success />} />
+              </Routes>
+              <FooterComponent />
+          </Wrapper>
         </BrowserRouter>
     </>
   );

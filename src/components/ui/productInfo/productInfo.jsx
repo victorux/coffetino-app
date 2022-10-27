@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import {useNavigate} from "react-router-dom";
 import axios from 'axios';
 import { useLocation } from 'react-router-dom'
 import { ProductDetails, 
@@ -11,7 +12,7 @@ import { ProductDetails,
   Select,
   QtyPacks,
   Input,
-  Button,
+  StyledButton,
   CardSubscription,
   Cards,
   Discount,
@@ -19,13 +20,13 @@ import { ProductDetails,
   Period,
   PeriodPrice,
   Summary,
-  CartButton,
   SummaryInfo,
   SummaryPrice,
   SummaryDetails,
   Description
 } from './productInfo.styled'
-import star from '../../../assets/icons/star.png'
+import star from '../../../assets/icons/star.png';
+import Button from '../../button/index';
 import cartIcon from '../../../assets/icons/shopping-cart-white.svg'
 import TitleOfSection from '../../sections/titleOfSection'
 import PopularSection from '../../sections/popularSection'
@@ -33,16 +34,18 @@ import { addProduct } from '../../../redux/cartRedux';
 import { useDispatch } from 'react-redux';
 
 function ProductInfo() {
+
   const [product, setProduct] = useState([]);
   const [quantity, setQuantity] = useState(1);
   const [type, setType] = useState(null);
   const [sub, setSub] = useState('onetime');
 
+  
   const location = useLocation();
   const id =  location.pathname.split('/')[2];
-
-  const dispatch = useDispatch();
   
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const getProduct = async () => {
@@ -86,7 +89,7 @@ function ProductInfo() {
     setSub(e.currentTarget.id)
   }
 
-  const handleClick = () => {
+  const handleClick = async () => {
     // update cart
     dispatch(
       addProduct({
@@ -96,7 +99,9 @@ function ProductInfo() {
         typeSelected: type
       }
       )
-    )
+    );
+    // then navigate to cart
+    navigate("/cart")
   };
 
   return (
@@ -120,8 +125,8 @@ function ProductInfo() {
           <LabelStyled>Packs per shipment</LabelStyled>
           <QtyPacks>
             <Input name="qty" value={quantity} type="number" onChange={handleQtyChange}  min="1" max="99" />
-            <Button name="inc" onClick={handleIncrease}>+</Button>
-            <Button name="dec" onClick={handleIncrease}>-</Button>
+            <StyledButton name="inc" onClick={handleIncrease}>+</StyledButton>
+            <StyledButton name="dec" onClick={handleIncrease}>-</StyledButton>
           </QtyPacks>
         </StyledSection>
         <StyledSection>
@@ -151,7 +156,7 @@ function ProductInfo() {
         </StyledSection>
         <hr  style={{height:'1px',borderWidth:0, color:'gray',backgroundColor:'#DFDFDF', margin: '30px 0'}} />
         <Summary>
-          <CartButton onClick={handleClick}><img src={cartIcon} alt='' /><span>Add to Cart</span></CartButton>
+          <Button runFunc={handleClick} label="Add to Cart" icon={cartIcon} />
           <SummaryInfo>
             <SummaryPrice>${product.price} / One-time</SummaryPrice>
             <SummaryDetails>Whole Bean, 2 packs,  One-time delivery</SummaryDetails>

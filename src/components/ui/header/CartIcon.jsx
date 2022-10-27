@@ -13,8 +13,12 @@ function CartIcon() {
   return (
     <Link to="/cart" title="Shopping cart">
       <IconBox>
-          <img src={cartIcon} width="24" alt="" />
-        <IconQuantity>{quantity}</IconQuantity>
+        <img src={cartIcon} width="24" alt="" />
+        {
+          quantity
+          ? <IconQuantity>{quantity}</IconQuantity>
+          : null
+        }
       </IconBox>
     </Link>
   )

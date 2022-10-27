@@ -46,7 +46,6 @@ function PopularSection({align}) {
     getProducts();
   }, []);
   
-  console.log(products);
     return (
         <div>
             <TitleOfSection align={align} label="Most popular this week"/>

@@ -16,9 +16,19 @@ import { Autoplay } from "swiper";
 import 'swiper/css';
 import 'swiper/css/autoplay';
 
+import {useNavigate} from "react-router-dom";
+
 
 function HeroSection() {
-  return (
+
+const navigate = useNavigate();
+
+const handleClick = () => {
+    console.log('ddd')
+    navigate("/products/");
+}
+
+    return (
      <> 
         <motion.div
           initial={{ opacity: 0, translateY: -70 }}
@@ -28,7 +38,7 @@ function HeroSection() {
           <Container>
             <Title>Your favorite coffee to you door</Title>
             <Subtitle>Scrambled it to make a type specimen book. It has survived not only five centuries</Subtitle>
-            <Button to="/products" label="Browse coffee now" />
+            <Button runFunc={handleClick} label="Browse coffee now" />
           </Container>
         </motion.div>
          <motion.div

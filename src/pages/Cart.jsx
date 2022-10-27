@@ -53,9 +53,6 @@ const CartList = styled.div`
   }
 `
 
-const SummaryList = styled.div` 
-`
-
 const BorderButton = styled.button`
   padding: 1.25rem 1.85rem;
   width: auto;
@@ -124,10 +121,7 @@ function Cart() {
       <RightBlock>
         <Title>Order Summary</Title>
         <SummaryBlock>
-          <SummaryList>
-            {/* {cart.products.map(product => <SummaryItem />)} */}
-          </SummaryList>
-          <Total />
+          <Total cart={cart} />
           <Button label="Go to checkout" />
         </SummaryBlock>
       </RightBlock>
