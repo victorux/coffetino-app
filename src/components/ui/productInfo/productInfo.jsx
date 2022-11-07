@@ -51,7 +51,7 @@ function ProductInfo() {
   useEffect(() => {
     const getProduct = async () => {
       try {
-        const res = await axios.get('/api/products/find/' + id)
+        const res = await axios.get('https://coffetino-server-oruo.vercel.app/api/products/find/' + id)
         setProduct(res.data);
         setType(res.data.type[0])
       } catch(err) {}}

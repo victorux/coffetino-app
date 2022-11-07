@@ -40,7 +40,7 @@ function ProductsItems({ sort, cat }) {
   useEffect(() => {
     const getProducts = async () => {
       try {
-        const res = await axios.get("/api/products/")
+        const res = await axios.get("https://coffetino-server-oruo.vercel.app/api/products/")
         setProducts(res.data);
         setLoading(false)
       } catch (error) {

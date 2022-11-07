@@ -35,7 +35,7 @@ function PopularSection({align}) {
 
   const getProducts = async () => {
     try {
-      const res = await axios.get("/api/products");
+      const res = await axios.get("https://coffetino-server-oruo.vercel.app/api/products");
       setProducts(res.data.slice(0,5));
     } catch (error) {
       console.log(error);

@@ -29,7 +29,7 @@ function PayWithStripe({children, amount}) {
         const makeRequest = async () => {
             try {
                 const res = await axios.post(
-                    "http://localhost:4000/api/checkout/payment", 
+                    "https://coffetino-server-oruo.vercel.app/api/checkout/payment", 
                     {
                         tokenId: stripeToken.id,
                         amount: amountPay,
