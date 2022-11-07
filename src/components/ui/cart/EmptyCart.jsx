@@ -1,8 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
-import globalVariables from "../components/styles/globalVariables"
-import { device } from '../components/styles/breakpoints';
-import success from "../assets/icons/success.png"
+import globalVariables from "../../styles/globalVariables"
+import { device } from '../../styles/breakpoints';
+import emptyCart from "../../../assets/icons/empty-cart.png"
 import { useNavigate } from "react-router-dom"
 
 const Wrapper = styled.div`
@@ -62,24 +62,23 @@ const BorderButton = styled.button`
 
 
 
-function Success() {
+function EmptyCart() {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    navigate("/")
+    navigate("/products")
   };
   
   return (
     <Wrapper>
       <Container>
-        <img src={success} alt="success" />
-        <Title>Your order has been processed!</Title>
-        <Description>Congratulations! Your order is completed and have been placed successfully.<br/>
-          You'll receive an email once your order is dispatched.</Description>
-        <BorderButton onClick={handleClick}>Go to home page</BorderButton>
+        <img src={emptyCart} alt="success" />
+        <Title>Your cart is empty!</Title>
+        <Description>Looks like you have not added anything to you cart. <br/>Go ahead & explore top categories.</Description>
+        <BorderButton onClick={handleClick}>Continue shopping</BorderButton>
       </Container>
     </Wrapper>
   )
 }
 
-export default Success
+export default EmptyCart

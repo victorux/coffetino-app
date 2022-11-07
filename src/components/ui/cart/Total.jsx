@@ -16,14 +16,20 @@ const Item = styled.div`
 `
 
 const Span = styled.span`
-  font-size: ${({theme}) => theme.fontSizes._500};
+  font-size: ${({theme}) => theme.fontSizes._400};
   font-weight: 300;
   color: ${({theme}) => theme.colors.black};
 `
 
+const SmallSpan = styled.span`
+  font-size: ${({theme}) => theme.fontSizes._300};
+  font-weight: 300;
+  color: ${({theme}) => theme.colors.gray700};
+`
+
 const BoldSpan = styled.span`
-  font-size: ${({theme}) => theme.fontSizes._600};
-  font-weight: 600;
+  font-size: ${({theme}) => theme.fontSizes._500};
+  font-weight: 500;
   color: ${({theme}) => theme.colors.black};
 `
 
@@ -46,20 +52,32 @@ const totalPrice = products.reduce(function(previousValue, currentValue) {
   return (
     <Container>
       <Item>
-        <Span>Delivery</Span>
+        <Span>Items</Span>
+        <Span>
+          {
+            formatter.format(totalPrice)
+          }
+        </Span>
+      </Item>
+      <Item>
+        <Span>Postage & Packing</Span>
         <Span>Free</Span>
       </Item>
       <Item>
         <Span>Discount</Span>
         <Span>-</Span>
       </Item>
+      <hr color='#dadada' size="1"/>
       <Item>
-        <BoldSpan>Total</BoldSpan>
+        <BoldSpan>Order Total</BoldSpan>
         <BoldSpan>
           {
             formatter.format(totalPrice)
           }
         </BoldSpan>
+      </Item>
+      <Item>
+        <SmallSpan>Order total include VAT.</SmallSpan>
       </Item>
     </Container>
   )

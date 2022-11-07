@@ -11,9 +11,8 @@ function Blocks() {
             </FooterBlock>
             <FooterBlock>
                 <ListTitle>Company</ListTitle>
-                <ListLink href="" title="">Our story</ListLink>
-                <ListLink href="" title="">Shipping</ListLink>
-                <ListLink href="" title="">Privacy policy</ListLink>
+                <ListLink href="/about" title="">About Us</ListLink>
+                <ListLink href="/terms" title="">Privacy policy</ListLink>
             </FooterBlock>
             <FooterBlock>
                 <ListTitle>Follow Us</ListTitle>

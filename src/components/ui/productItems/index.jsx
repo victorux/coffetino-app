@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { motion } from "framer-motion"
 import axios from "axios";
 import styled from "styled-components"
 import globalVariables from "../../styles/globalVariables";
@@ -69,10 +70,17 @@ function ProductsItems({ sort, cat }) {
 
   return (
     <div>
+      <motion.div
+          initial={{ opacity: 0,}}
+          animate={{ opacity: 1,}}
+          transition={{ duration: 1 }}
+      >
       <StyledProducts>
+      
       { loading 
         ? "Loading"
         : products.map(product =>
+          
           <ProductItem 
             img={product.img} 
             key={product._id} 
@@ -80,9 +88,13 @@ function ProductsItems({ sort, cat }) {
             title={product.title} 
             price={product.price} 
             rating={product.rating} 
-          /> )
+          />
+          
+          )
       }
+      
       </StyledProducts>
+      </motion.div>
     </div>
   )
 }

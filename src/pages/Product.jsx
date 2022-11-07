@@ -5,7 +5,7 @@ import globalVariables from "../components/styles/globalVariables"
 
 
 const Wrapper = styled.div`
-max-width: ${globalVariables.maxWidth};
+  max-width: ${globalVariables.maxWidth};
   padding: 30px 20px 0 20px;
   margin: 0 auto;
 

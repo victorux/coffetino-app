@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { motion } from "framer-motion"
 import {useNavigate} from "react-router-dom";
 import axios from 'axios';
 import { useLocation } from 'react-router-dom'
@@ -106,6 +107,11 @@ function ProductInfo() {
 
   return (
     <>
+    <motion.div
+      initial={{ opacity: 0, translateY: -70 }}
+      animate={{ opacity: 1, translateY: 0 }}
+      transition={{ duration: 0.8 }}
+    >
     <MainContainer>
       <ImageContainer>
         <img src={product.img} alt="" />
@@ -158,8 +164,8 @@ function ProductInfo() {
         <Summary>
           <Button runFunc={handleClick} label="Add to Cart" icon={cartIcon} />
           <SummaryInfo>
-            <SummaryPrice>${product.price} / One-time</SummaryPrice>
-            <SummaryDetails>Whole Bean, 2 packs,  One-time delivery</SummaryDetails>
+            <SummaryPrice>${Number(product.price * quantity).toFixed(2)} / {sub}</SummaryPrice>
+            <SummaryDetails>{`${type}, ${quantity} packs,  ${sub} delivery`}</SummaryDetails>
           </SummaryInfo>
         </Summary>
       </ProductDetails>
@@ -169,6 +175,7 @@ function ProductInfo() {
       Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. 
     </Description>
     <PopularSection align="left" />
+    </motion.div>
     </>
   )
 }

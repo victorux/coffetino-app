@@ -24,7 +24,7 @@ function Header() {
             <LeftLinksContainer>
               <Separator />
               <Link to="/products">Shop</Link>
-              <Link to="/subscription" >Subscription</Link>
+              <Link to="/about" >About Us</Link>
             </LeftLinksContainer>
           </LeftNavigation>
           <RightNavigation>

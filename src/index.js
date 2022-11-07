@@ -6,7 +6,8 @@ import GlobalStyle from './components/styles/globalStore.styles.js';
 import globalVariables from './components/styles/globalVariables.js';
 import "./components/styles/googlefonts.css";
 import { Provider } from "react-redux";
-import store from "./redux/store";
+import {store, persistor} from "./redux/store";
+import { PersistGate } from 'redux-persist/integration/react'
 
 
 
@@ -17,9 +18,11 @@ const theme = {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
       <Provider store={store}>
-        <ThemeProvider theme={theme}>
-          <GlobalStyle />
-          <App />
-        </ThemeProvider>
+        <PersistGate loading={null} persistor={persistor}>
+          <ThemeProvider theme={theme}>
+            <GlobalStyle />
+            <App />
+          </ThemeProvider>
+        </PersistGate>
       </Provider>
 );

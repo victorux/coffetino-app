@@ -12,6 +12,7 @@ const StyledButton = styled.button`
   transition: all  0.25s ease;
   cursor: pointer;
 
+
   div {
     display: flex;
     flex-direction: row;

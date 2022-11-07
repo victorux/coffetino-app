@@ -177,6 +177,20 @@ export const IconQuantity = styled.div`
   font-size: ${globalVariables.fontSizes._300};
 `
 
+export const SignoutStyled = styled.button`
+  padding: 10px 20px;
+  background-color: ${({theme}) => theme.colors.black};
+  border-radius: 6px;
+  color: #ffffff;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s all ease;
+
+  :hover {
+    background-color: ${({theme}) => theme.colors.gray700};
+  }
+`
+
 
 
 // Mobile Menu
